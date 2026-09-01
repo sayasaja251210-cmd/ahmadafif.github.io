@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Portfolio</title>
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --bg-color: #1f242d;
+            --second-bg-color: #323946;
+            --text-color: #fff;
+            --main-color: #0ef;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 360px;
+            background: var(--second-bg-color);
+            padding: 3rem;
+            border-radius: 1.6rem;
+            box-shadow: 0 0 1.5rem rgba(0, 238, 255, 0.12);
+        }
+
+        .login-container h1 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: .4rem;
+        }
+
+        .login-container h1 span {
+            color: var(--main-color);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 2.2rem;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 1.4rem;
+        }
+
+        .input-box i {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.8rem;
+            color: var(--main-color);
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 1.15rem 1.2rem 1.15rem 4.2rem;
+            background: var(--bg-color);
+            color: var(--text-color);
+            border: .1rem solid transparent;
+            border-radius: .7rem;
+            font-size: 1.3rem;
+            transition: .3s;
+        }
+
+        .input-box input:focus {
+            border-color: var(--main-color);
+            box-shadow: 0 0 .7rem rgba(0, 238, 255, 0.18);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--main-color);
+            color: var(--second-bg-color);
+            border-radius: 3rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 0 .8rem var(--main-color);
+            transition: .3s;
+        }
+
+        .login-btn:hover {
+            box-shadow: none;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 1.6rem;
+            color: var(--text-color);
+            font-size: 1.2rem;
+        }
+
+        .back:hover {
+            color: var(--main-color);
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 1.2rem;
+            font-size: 1.2rem;
+            color: var(--main-color);
+        }
+
+        /* Tablet */
+        @media (min-width: 600px) {
+            .login-container {
+                max-width: 390px;
+                padding: 3.2rem;
+            }
+        }
+
+        /* Laptop / desktop */
+        @media (min-width: 992px) {
+            .login-container {
+                max-width: 400px;
+                padding: 3.5rem;
+            }
+
+            .login-container h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* HP kecil */
+        @media (max-width: 400px) {
+            html {
+                font-size: 58%;
+            }
+
+            body {
+                padding: 1.5rem;
+            }
+
+            .login-container {
+                padding: 2.5rem 2rem;
+            }
+        }
+
+        /* HP sangat kecil */
+        @media (max-width: 320px) {
+            html {
+                font-size: 55%;
+            }
+
+            .login-container {
+                padding: 2.2rem 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <h1>Log<span>in</span></h1>
+        <p class="subtitle">Welcome to my portfolio</p>
+
+        <form id="loginForm">
+
+            <div class="input-box">
+                <i class='bx bx-user'></i>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+
+            <div class="input-box">
+                <i class='bx bx-lock-alt'></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+
+            <p class="message" id="message"></p>
+
+        </form>
+
+        <a href="index.html" class="back">
+            <i class='bx bx-arrow-back'></i> Back to Portfolio
+        </a>
+
+    </div>
+
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const message = document.getElementById("message");
+
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "12345") {
+                message.textContent = "Login berhasil!";
+
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1000);
+            } else {
+                message.textContent = "Username atau password salah!";
+            }
+        });
+    </script>
+
+</body>
+</html>
