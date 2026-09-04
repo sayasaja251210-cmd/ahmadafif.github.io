@@ -281,7 +281,7 @@ span {
 }  
 
 .portfolio-box:hover .portfolio-layer {
-    transform: translateY(0)
+    transform: translateY(0);
 }
 
 .portfolio-layer h4 {
